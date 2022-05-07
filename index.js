@@ -1,6 +1,9 @@
 var express = require("express");
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
+
+const util = require("./util");
+
 var app = express();
 app.use(bodyParser.json());
 
@@ -55,44 +58,59 @@ app.get("/createtable", (req, res) => {
 });
 
 app.post("/players", (req, res) => {
-    let data = {name: req.body.name, id: req.body.id};
-    let sql = "INSERT INTO test_info SET ?";
-    db.query(sql, data, (err) => {
-        if(err) {
-            console.log(err);
-            res.send({success: false, message: "Could not add player.", error: err});
-            return;
-        } else {
-        res.send("Added player successfully.")
-        }
-    })
+    if(util.onlyLetters(req.body.name) && util.onlyNumbers(req.body.id)) {
+        let data = {name: req.body.name, id: req.body.id};
+        let sql = "INSERT INTO test_info SET ?";
+        db.query(sql, data, (err) => {
+            if(err) {
+                console.log(err);
+                res.send({success: false, message: "Could not add player.", error: err});
+                return;
+            } else {
+            res.send("Added player successfully.")
+            }
+        })
+    } else {
+        res.send({success: false, message: "Player name can only contain letters. ID can only contain numerical values."});
+        return;
+    }
 });
 
 app.put("/players", (req, res) => {
-    let data = {name: req.body.name, id: req.body.id};
-    let sql = `UPDATE test_info SET name="${data.name}" WHERE id="${data.id}"`;
-    db.query(sql, data, (err) => {
-        if(err) {
-            console.log(err);
-            res.send({success: false, message: "Could not update player's name.", error: err});
-            return;
-        }
-        res.send("Updated player's name.")
-    })
+    if(util.onlyLetters(req.body.name) && util.onlyNumbers(req.body.id)) {
+        let data = {name: req.body.name, id: req.body.id};
+        let sql = `UPDATE test_info SET name="${data.name}" WHERE id="${data.id}"`;
+        db.query(sql, data, (err) => {
+            if(err) {
+                console.log(err);
+                res.send({success: false, message: "Could not update player's name.", error: err});
+                return;
+            }
+            res.send("Updated player's name.")
+        })
+    } else {
+        res.send({success: false, message: "Player name can only contain letters. ID can only contain numerical values."});
+        return;
+    }
 });
 
 app.delete("/players", (req, res) => {
-    let data = {id: req.body.id};
-    let sql = `DELETE FROM test_info WHERE id="${data.id}"`;
-    db.query(sql, data, (err) => {
-        if(err) {
-            console.log(err);
-            res.send({success: false, message: "Could not delete player.", error: err});
-            return;
-        } else {
-        res.send("Deleted player.")
-        }
-    })
+    if(util.onlyNumbers(req.body.id)) {
+        let data = {id: req.body.id};
+        let sql = `DELETE FROM test_info WHERE id="${data.id}"`;
+        db.query(sql, data, (err) => {
+            if(err) {
+                console.log(err);
+                res.send({success: false, message: "Could not delete player.", error: err});
+                return;
+            } else {
+            res.send("Deleted player.")
+            }
+        })
+    } else {
+        res.send({success: false, message: "ID can only contain numerical values."});
+        return;
+    }
 });
 
 app.get("/players", (req, res) => {
