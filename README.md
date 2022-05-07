@@ -1,4 +1,4 @@
-# Player REST Api
+# Player REST API
 
 Created a simple REST API that utilizes NodeJS as the backend environment and Express, MySQL, and Body Parser in the NodeJS environment. Postman was used to test API Endpoints and their functionalities.
 
