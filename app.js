@@ -3,6 +3,7 @@ const mysql = require("mysql");
 const bodyParser = require("body-parser");
 
 const util = require("./util");
+const res = require("express/lib/response");
 
 var app = express();
 app.use(bodyParser.json());
@@ -121,7 +122,7 @@ app.get("/players", (req, res) => {
             res.send({success: false, message: "Could not find player information.", error: err});
             return;
         } else {
-        res.send(result)
+        res.render("index.ejs", "Hello");
         }
     })
 });
