@@ -121,8 +121,7 @@ app.get("/players", (req, res) => {
             console.log(err);
             res.send({success: false, message: "Could not find player information.", error: err});
             return;
-        } else {
-        res.render("index.ejs", "Hello");
         }
+        res.send(result);
     })
 });
