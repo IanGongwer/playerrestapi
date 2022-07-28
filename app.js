@@ -34,6 +34,10 @@ app.listen(3000, () => {
 
 // Routes
 
+app.get("/", (req, res) => {
+    res.send("Hello World");
+});
+
 app.get("/createdb", (req, res) => {
     let sql = "CREATE DATABASE uhc";
     db.query(sql, (err, result) => {
