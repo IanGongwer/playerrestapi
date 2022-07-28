@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const util = require("./util");
 const res = require("express/lib/response");
 
+const importData = require("./data.json")
+
 var app = express();
 app.use(bodyParser.json());
 
@@ -114,14 +116,18 @@ app.delete("/players", (req, res) => {
     }
 });
 
+// app.get("/players", (req, res) => {
+//     let sql = "SELECT * FROM test_info";
+//     db.query(sql, (err, result) => {
+//         if(err) {
+//             console.log(err);
+//             res.send({success: false, message: "Could not find player information.", error: err});
+//             return;
+//         }
+//         res.send(result);
+//     })
+// });
+
 app.get("/players", (req, res) => {
-    let sql = "SELECT * FROM test_info";
-    db.query(sql, (err, result) => {
-        if(err) {
-            console.log(err);
-            res.send({success: false, message: "Could not find player information.", error: err});
-            return;
-        }
-        res.send(result);
-    })
+    res.send(importData);
 });
