@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const app = express();
 const importData = require("./data.json");
 const corsOptions ={
@@ -8,6 +9,7 @@ const corsOptions ={
     optionSuccessStatus:200,
 }
 app.use(cors(corsOptions));
+app.use(bodyParser.json());
 let port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
@@ -19,7 +21,7 @@ app.get("/apiData", (req, res) => {
 });
 
 app.post("/apiData", (req, res) => {
-    res.send(req.body);
+    res.send(req.body.name + " " + req.body.id);
 });
 
 app.listen(port, () => {
