@@ -18,6 +18,14 @@ app.get("/apiData", (req, res) => {
     res.send(importData);
 })
 
+app.post("/apiData", (req, res) => {
+    let objectData = {
+        "name" : req.body.name,
+        "id" : req.body.id
+    };
+    importData.push(objectData);
+})
+
 app.listen(port, () => {
     console.log("API app listening on port 3000");
 })
