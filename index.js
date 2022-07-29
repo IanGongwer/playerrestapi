@@ -20,10 +20,10 @@ app.get("/apiData", (req, res) => {
 
 app.post("/apiData", (req, res) => {
     let objectData = {
-        "name" : req.body.name,
-        "id" : req.body.id
+        "name": req.body.name,
+        "id": req.body.id
     };
-    importData.push(objectData);
+    res.send(objectData);
 })
 
 app.listen(port, () => {
