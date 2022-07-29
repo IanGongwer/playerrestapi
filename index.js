@@ -23,7 +23,7 @@ app.post("/apiData", (req, res) => {
         "name": req.body.name,
         "id": req.body.id
     };
-    res.send(objectData);
+    res.send("Success");
 })
 
 app.listen(port, () => {
