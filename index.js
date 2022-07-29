@@ -26,6 +26,7 @@ app.post("/apiData", (req, res) => {
         "id": req.body.id
     }
     importData.push(objectData);
+    res.send("Successful");
 });
 
 app.listen(port, () => {
