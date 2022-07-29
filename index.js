@@ -21,7 +21,11 @@ app.get("/apiData", (req, res) => {
 });
 
 app.post("/apiData", (req, res) => {
-    res.send(req.body.name + " " + req.body.id);
+    let objectData = {
+        "name": req.body.name,
+        "id": req.body.id
+    }
+    importData.push(objectData);
 });
 
 app.listen(port, () => {
