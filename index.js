@@ -12,5 +12,5 @@ app.get("/apiData", (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log("Example app listing on port 3000");
+    console.log("API app listening on port 3000");
 })
