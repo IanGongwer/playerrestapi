@@ -19,7 +19,7 @@ app.get("/apiData", (req, res) => {
 });
 
 app.post("/apiData", (req, res) => {
-    res.send("Success");
+    res.send(req.body.name + " " + req.body.id);
 });
 
 app.listen(port, () => {
