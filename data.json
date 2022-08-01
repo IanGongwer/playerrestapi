@@ -1,11 +1,15 @@
 [
     {
-        "name": "ian",
-        "id": 0
+        "name": "centralis",
+        "wins": 12,
+        "kills": 234,
+        "deaths": 246
     },
 
     {
-        "name": "haylie",
-        "id": 1
+        "name": "stimpy",
+        "wins": 15,
+        "kills": 833,
+        "deaths": 237
     }
 ]

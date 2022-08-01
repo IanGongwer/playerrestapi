@@ -23,7 +23,9 @@ app.get("/apiData", (req, res) => {
 app.post("/apiData", (req, res) => {
     let objectData = {
         "name": req.body.name,
-        "id": req.body.id
+        "wins": req.body.wins,
+        "kills": req.body.kills,
+        "deaths": req.body.deaths
     }
     importData.push(objectData);
     res.send("Successful");
