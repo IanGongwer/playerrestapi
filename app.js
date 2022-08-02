@@ -17,12 +17,13 @@ let port = process.env.PORT || 3000;
 
 // Database
 
-const db = mysql.createConnection({
+const db = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
-    port: "3306"
+    port: "3306",
+    connectionLimit: 10
 });
 
 db.connect((err) => {
