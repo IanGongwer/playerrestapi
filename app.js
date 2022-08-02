@@ -30,8 +30,12 @@ db.connect((err) => {
     console.log("MYSQL Connected.")
 });
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
+app.get("/", (req, res) => {
+    res.send("Centralis REST API");
+});
+
+app.listen(port, () => {
+    console.log("Server running...");
 });
 
 // Routes
