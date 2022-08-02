@@ -3,18 +3,20 @@ const mysql = require("mysql");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
-const corsOptions ={
-    origin:'*', 
-    credentials:true,
-    optionSuccessStatus:200,
+
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200,
 }
+
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 let port = process.env.PORT || 3000;
 
 // Database
 
-const db = mysql.createConnection( {
+const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -22,9 +24,9 @@ const db = mysql.createConnection( {
 });
 
 db.connect((err) => {
-    if(err) {
+    if (err) {
         console.log(err);
-        res.send({success: false, message: "Could not connect to database.", error: err});
+        res.send({ success: false, message: "Could not connect to database.", error: err });
         return;
     }
     console.log("MYSQL Connected.")
@@ -41,9 +43,9 @@ app.listen(port, () => {
 app.get("/players", (req, res) => {
     let sql = "SELECT * FROM player_statistics";
     db.query(sql, (err, result) => {
-        if(err) {
+        if (err) {
             console.log(err);
-            res.send({success: false, message: "Could not find player information.", error: err});
+            res.send({ success: false, message: "Could not find player information.", error: err });
             return;
         }
         res.send(result);
