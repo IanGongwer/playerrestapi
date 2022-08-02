@@ -1,13 +1,16 @@
-var express = require("express");
-const mysql = require("mysql");
+const express = require("express");
+const cors = require("cors");
 const bodyParser = require("body-parser");
-
-const util = require("./util");
-const res = require("express/lib/response");
-require('dotenv').config();
-
-var app = express();
+const app = express();
+const importData = require("./data.json");
+const corsOptions ={
+    origin:'*', 
+    credentials:true,
+    optionSuccessStatus:200,
+}
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
+let port = process.env.PORT || 3000;
 
 // Database
 
