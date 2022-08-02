@@ -35,7 +35,7 @@ app.listen(port, () => {
 });
 
 app.get("/players", (req, res) => {
-    let sql = "SELECT * FROM player_statistics";
+    let sql = "SELECT * FROM player_statistics ORDER BY game_wins DESC, player_kills DESC LIMIT 10"
     db.query(sql, (err, result) => {
         if (err) {
             console.log(err);
