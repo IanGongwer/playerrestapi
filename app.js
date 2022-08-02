@@ -1,8 +1,8 @@
 const express = require("express");
+const mysql = require("mysql");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
-const importData = require("./data.json");
 const corsOptions ={
     origin:'*', 
     credentials:true,
@@ -36,6 +36,18 @@ app.get("/", (req, res) => {
 
 app.listen(port, () => {
     console.log("Server running...");
+});
+
+app.get("/players", (req, res) => {
+    let sql = "SELECT * FROM player_statistics";
+    db.query(sql, (err, result) => {
+        if(err) {
+            console.log(err);
+            res.send({success: false, message: "Could not find player information.", error: err});
+            return;
+        }
+        res.send(result);
+    })
 });
 
 // Routes
@@ -121,15 +133,3 @@ app.listen(port, () => {
 //         return;
 //     }
 // });
-
-app.get("/players", (req, res) => {
-    let sql = "SELECT * FROM player_statistics";
-    db.query(sql, (err, result) => {
-        if(err) {
-            console.log(err);
-            res.send({success: false, message: "Could not find player information.", error: err});
-            return;
-        }
-        res.send(result);
-    })
-});
