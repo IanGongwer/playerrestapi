@@ -25,15 +25,6 @@ const db = mysql.createPool({
     database: process.env.DB_DATABASE
 });
 
-db.connect((err) => {
-    if (err) {
-        console.log(err);
-        // res.send({ success: false, message: "Could not connect to database.", error: err });
-        return;
-    }
-    console.log("MYSQL Connected.")
-});
-
 app.get("/", (req, res) => {
     res.send("Centralis REST API");
 });
