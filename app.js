@@ -46,6 +46,18 @@ app.get("/players", (req, res) => {
     })
 });
 
+app.get("/gameinformation", (req, res) => {
+    let sql = "SELECT * FROM game_information"
+    db.query(sql, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.send({ success: false, message: "Could not find game information.", error: err });
+            return;
+        }
+        res.send(result);
+    })
+});
+
 // Routes
 
 // app.get("/createdb", (req, res) => {
