@@ -1,6 +1,10 @@
 # Player REST API
 
-Created a simple REST API that utilizes NodeJS as the backend environment and Express, MySQL, Cors, DotEnv, and Body Parser in the NodeJS environment. Postman was used to test API Endpoints and their functionalities. Project is hosted on Heroku at https://centralisrestapi.herokuapp.com/players.
+Created a simple REST API that utilizes NodeJS as the backend environment and Express, MySQL, Cors, DotEnv, and Body Parser in the NodeJS environment. Postman was used to test API Endpoints and their functionalities. Project is hosted on Heroku.
+Endpoints:
+- https://centralisrestapi.herokuapp.com/players
+- https://centralisrestapi.herokuapp.com/gameinformation
+- https://centralisrestapi.herokuapp.com/killfeed
 
 REST API Routes:
 - /players: Sends back a JSON response of top 10 players (Ranked by # of wins, then # of kills, then # of deaths)
@@ -10,3 +14,4 @@ Wins and Kills sort the players higher on the leaderboard, while deaths sort the
 
 # JSON Response
 ![image](https://user-images.githubusercontent.com/63007329/186742361-759f71d4-f730-4265-ad3f-2cb22ec2ec20.png)
+![image](https://user-images.githubusercontent.com/63007329/187269778-253773dd-40c0-4ad7-bcce-01302c1125a3.png)
