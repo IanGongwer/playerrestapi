@@ -58,6 +58,18 @@ app.get("/gameinformation", (req, res) => {
     })
 });
 
+app.get("/killfeed", (req, res) => {
+    let sql = "SELECT * FROM kill_feed"
+    db.query(sql, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.send({ success: false, message: "Could not find kill feed information.", error: err });
+            return;
+        }
+        res.send(result);
+    })
+});
+
 // Routes
 
 // app.get("/createdb", (req, res) => {
