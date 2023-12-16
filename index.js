@@ -3,17 +3,21 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
 const importData = require("./data.json");
-const corsOptions ={
-    origin:'*', 
-    credentials:true,
-    optionSuccessStatus:200,
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200,
 }
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 3001;
 
 app.get("/", (req, res) => {
     res.send("Hello World");
+});
+
+app.get("/message", (req, res) => {
+    res.json({ message: "Hello from server!" });
 });
 
 app.get("/apiData", (req, res) => {
@@ -32,5 +36,5 @@ app.post("/apiData", (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log("API app listening on port 3000");
+    console.log("API app listening on port 3001");
 });
