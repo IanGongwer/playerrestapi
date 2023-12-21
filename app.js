@@ -46,6 +46,18 @@ app.get("/players", (req, res) => {
     })
 });
 
+app.get("/teams", (req, res) => {
+    let sql = "SELECT player_name, player_uuid, player_team FROM player_statistics WHERE player_team IS NOT NULL"
+    db.query(sql, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.send({ success: false, message: "Could not find team information.", error: err });
+            return;
+        }
+        res.send(result);
+    })
+});
+
 app.get("/gameinformation", (req, res) => {
     let sql = "SELECT * FROM game_information"
     db.query(sql, (err, result) => {
