@@ -47,7 +47,7 @@ app.get("/players", (req, res) => {
 });
 
 app.get("/teams", (req, res) => {
-    let sql = "SELECT player_name, player_uuid, player_team FROM player_statistics WHERE player_team IS NOT NULL"
+    let sql = "SELECT * FROM player_teams"
     db.query(sql, (err, result) => {
         if (err) {
             console.log(err);
